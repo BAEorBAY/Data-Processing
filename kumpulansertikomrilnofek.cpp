@@ -294,7 +294,7 @@ int main() {
     do {
         cout << "Masukan Password :";
         cin >> password;
-        //system("cls"); // Uncomment if running on Windows and you want to clear the screen
+        system("cls"); // Uncomment if running on Windows and you want to clear the screen
         if (password == pass) {
             cout << "1. Program Menu\n";
             cout << "2. Program Sewa\n";
