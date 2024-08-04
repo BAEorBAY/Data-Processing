@@ -1,30 +1,32 @@
 #include <iostream>
 #include <string>
+#include <cstdlib> // For system("cls")
 
 using namespace std;
 
 void menu(){
-    int i=1, pil[20], harga[20], jum[20], total[20], total_s = 0, total_sd = 0, diskon = 0, bayar, kembalian, total_a = 0;
-    string nama[20], menu[20], vc;
+    int i = 1, pil[50], harga[50], jum[50], total[50], total_s = 0, total_sd = 0, diskon = 0, bayar, kembalian, total_a = 0;
+    string nama[50], menu[50], vc;
     char ulang;
+
     do {
         cout << "===========================================================\n";
         cout << "=================Program Kasir Honest Grup=================\n";
         cout << "===========================================================\n\n";
         cout << "========================================\n";
-        cout << "1.Beef with Sambal Matah     :Rp. 57.000\n";
-        cout << "2.Chicken with torched mentai:Rp. 44.000\n";
-        cout << "3.Beef Teriyaki              :Rp. 55.000\n";
-        cout << "4.Chicken With Japanese Curry:Rp. 44.000\n";
-        cout << "5.Butter Chicken             :Rp. 45.000\n";
-        cout << "6.Es Kopi Cheer Me Up        :Rp. 20.000\n";
-        cout << "7.Es Kopi Latte Lowkey       :Rp. 23.000\n";
-        cout << "8.Es Coklat Cozy             :Rp. 27.000\n";
-        cout << "9.Es Manggo Yakult Booster   :Rp. 21.000\n";
-        cout << "10.Mineral Water             :Rp. 5000\n";
+        cout << "1. Beef with Sambal Matah     : Rp. 57.000\n";
+        cout << "2. Chicken with torched mentai: Rp. 44.000\n";
+        cout << "3. Beef Teriyaki              : Rp. 55.000\n";
+        cout << "4. Chicken With Japanese Curry: Rp. 44.000\n";
+        cout << "5. Butter Chicken             : Rp. 45.000\n";
+        cout << "6. Es Kopi Cheer Me Up        : Rp. 20.000\n";
+        cout << "7. Es Kopi Latte Lowkey       : Rp. 23.000\n";
+        cout << "8. Es Coklat Cozy             : Rp. 27.000\n";
+        cout << "9. Es Manggo Yakult Booster   : Rp. 21.000\n";
+        cout << "10. Mineral Water             : Rp. 5.000\n";
         cout << "========================================\n";
-        
-        cout << "Masukan Nama Anda :";
+
+        cout << "Masukan Nama Anda :";          
         cin >> nama[i];
         cout << "==========================\n";
         cout << "Pilih Menu yang akan Di Pesan :";
@@ -73,12 +75,12 @@ void menu(){
                 harga[i] = 27000;
                 break;
             case 9:
-                cout << "Es Manggo Yakult Booster   :Rp. 21.000\n";
+                cout << "Anda Memesan : Es Manggo Yakult Booster   :Rp. 21.000\n";
                 menu[i] = "Es Manggo";
                 harga[i] = 21000;
                 break;
             case 10:
-                cout << "Anda Memesan : Mineral Water             :Rp. 5.000\n";
+                cout << "Anda Memesan : Mineral Water              :Rp. 5.000\n";
                 menu[i] = "Mineral Water";
                 harga[i] = 5000;
                 break;
@@ -122,7 +124,7 @@ void menu(){
         cout << "Masukan Kode Voucher :";
         cin >> vc;
         if (vc == "honest20" || vc == "Honest20") {
-            total_s = total_s - diskon - 20000;
+            total_sd = total_s - diskon - 20000;
             cout << "Jumlah Bayar Setelah Diskon :" << total_s << endl;
         } else if (vc == "Honest10" || vc == "honest10") {
             total_sd = total_s - diskon - ((total_s - diskon) * 10 / 100);
@@ -153,7 +155,7 @@ void menu(){
     cout << "Apakah Anda Ingin Memesan lagi :(Y|T)";
     cin >> ulang;
 
-} while (ulang == 'Y' || ulang == 'y');
+    } while (ulang == 'Y' || ulang == 'y');
 }
 
 void sewa(){
@@ -162,7 +164,7 @@ void sewa(){
     char ulang;
     do {
         cout << "===========================================================================" << endl;
-        cout << "No          Jenis Kendaraan          Harga per 2 jam        Harga unuk Jam " << endl;
+        cout << "No          Jenis Kendaraan          Harga per 2 jam        Harga untuk Jam " << endl;
         cout << "                                                               Berikutnya  " << endl;
         cout << "1.           Sepeda Biasa               Rp.30.000              Rp.10.000   " << endl;
         cout << "2.           Sepeda Family              Rp.25.000              Rp.15.000   " << endl;
@@ -199,6 +201,10 @@ void sewa(){
 
         cout << "Silahkan Masukan Durasi Peminjaman (dalam jam):";
         cin >> lama; 
+        if (lama < 2) {
+            cout << "Durasi peminjaman minimal 2 jam.\n";
+            continue;
+        }
         total = harga + ((lama - 2) * tambahan);
         total_s += total;
 
@@ -288,7 +294,7 @@ int main() {
     do {
         cout << "Masukan Password :";
         cin >> password;
-        system("cls");
+        //system("cls"); // Uncomment if running on Windows and you want to clear the screen
         if (password == pass) {
             cout << "1. Program Menu\n";
             cout << "2. Program Sewa\n";
